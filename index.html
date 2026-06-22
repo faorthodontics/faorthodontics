@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FA Orthodontics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #205eab;
+      --sky: #2b97d4;
+      --silver: #bab9b9;
+      --white: #ffffff;
+      --light-bg: #f4f8fd;
+      --dark-text: #1a1a2e;
+      --mid-text: #555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark-text);
+      background: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(186,185,185,0.25);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo .logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--navy), var(--sky));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 18px; font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    .nav-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--navy);
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      color: var(--mid-text); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+
+    .nav-book-btn {
+      background: linear-gradient(135deg, var(--navy), var(--sky));
+      color: white !important;
+      padding: 9px 22px;
+      border-radius: 25px;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-book-btn:hover { opacity: 0.88; color: white !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: var(--navy); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background: linear-gradient(145deg, #eaf2fb 0%, #f0f7ff 50%, #e8f4fc 100%);
+      padding: 100px 5% 60px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(43,151,212,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -60px; left: -60px;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(32,94,171,0.10) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; position: relative; z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(32,94,171,0.1); color: var(--navy);
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--sky); border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 700; line-height: 1.15;
+      color: var(--dark-text); margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--navy), var(--sky));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 16px; color: var(--mid-text);
+      line-height: 1.7; margin-bottom: 36px; max-width: 440px;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--navy), var(--sky));
+      color: white; padding: 14px 30px; border-radius: 30px;
+      text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(32,94,171,0.3);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(32,94,171,0.38);
+    }
+
+    .btn-secondary {
+      color: var(--navy); text-decoration: none;
+      font-weight: 600; font-size: 15px;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 0.2s;
+    }
+    .btn-secondary:hover { gap: 10px; }
+
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 44px; padding-top: 32px;
+      border-top: 1px solid rgba(186,185,185,0.3);
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px; font-weight: 700; color: var(--navy);
+    }
+    .stat-label { font-size: 12px; color: var(--silver); font-weight: 500; margin-top: 2px; }
+
+    /* Hero visual */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    .hero-card-stack {
+      position: relative; width: 340px; height: 400px;
+    }
+
+    .hero-main-card {
+      position: absolute; top: 0; left: 0; right: 0;
+      background: white;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(32,94,171,0.15);
+    }
+
+    .smile-graphic {
+      width: 100%; height: 180px;
+      background: linear-gradient(135deg, var(--light-bg), #daeeff);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; position: relative; overflow: hidden;
+    }
+
+    .smile-svg { width: 120px; }
+
+    .card-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--silver); margin-bottom: 4px;
+    }
+    .card-value {
+      font-size: 16px; font-weight: 600; color: var(--dark-text);
+    }
+    .card-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 16px; padding-top: 16px;
+      border-top: 1px solid rgba(186,185,185,0.2);
+    }
+
+    .badge-pill {
+      background: linear-gradient(135deg, rgba(32,94,171,0.1), rgba(43,151,212,0.1));
+      color: var(--navy); padding: 5px 12px; border-radius: 20px;
+      font-size: 12px; font-weight: 600;
+    }
+
+    .hero-float-card {
+      position: absolute; bottom: 20px; right: -30px;
+      background: white; border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 10px 30px rgba(32,94,171,0.15);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .float-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--sky));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .float-text {}
+    .float-title { font-size: 13px; font-weight: 600; }
+    .float-sub { font-size: 11px; color: var(--silver); }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 90px 5%; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--sky);
+      margin-bottom: 12px; display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700; color: var(--dark-text);
+      margin-bottom: 16px; line-height: 1.2;
+    }
+
+    .section-sub {
+      font-size: 16px; color: var(--mid-text);
+      line-height: 1.7; max-width: 560px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--light-bg); }
+
+    .services-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 52px; gap: 24px; flex-wrap: wrap;
+    }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+
+    .service-card {
+      background: white; border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid rgba(186,185,185,0.2);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(32,94,171,0.12);
+    }
+
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(32,94,171,0.1), rgba(43,151,212,0.15));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 18px; font-weight: 600;
+      color: var(--dark-text); margin-bottom: 10px;
+    }
+    .service-desc { font-size: 14px; color: var(--mid-text); line-height: 1.65; }
+
+    .service-tag {
+      display: inline-block; margin-top: 16px;
+      font-size: 11px; font-weight: 600; color: var(--sky);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    /* ── CASES ── */
+    #cases { background: white; }
+
+    .cases-header { margin-bottom: 52px; }
+
+    .cases-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+
+    .case-card {
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(186,185,185,0.2);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .case-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(32,94,171,0.12);
+    }
+
+    .case-images {
+      display: grid; grid-template-columns: 1fr 1fr;
+      height: 180px; position: relative;
+    }
+    .case-img {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+    }
+    .case-img.before { background: #f5f5f5; }
+    .case-img.after {
+      background: linear-gradient(135deg, rgba(43,151,212,0.12), rgba(32,94,171,0.15));
+    }
+    .case-divider {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: 28px; height: 28px; background: white;
+      border-radius: 50%; border: 2px solid var(--sky);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--sky); z-index: 2;
+    }
+
+    .case-labels {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--light-bg);
+    }
+    .case-lbl {
+      text-align: center; padding: 6px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--silver);
+    }
+
+    .case-info { padding: 20px; }
+    .case-treatment {
+      font-size: 15px; font-weight: 600; color: var(--dark-text); margin-bottom: 6px;
+    }
+    .case-duration { font-size: 13px; color: var(--silver); }
+    .case-pill {
+      display: inline-block; margin-top: 12px;
+      background: rgba(43,151,212,0.1); color: var(--sky);
+      padding: 4px 12px; border-radius: 12px;
+      font-size: 11px; font-weight: 600;
+    }
+
+    /* ── BOOKING ── */
+    #booking {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a4d8f 40%, var(--sky) 100%);
+      padding: 90px 5%;
+    }
+
+    .booking-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+
+    .booking-left .section-eyebrow { color: rgba(255,255,255,0.65); }
+    .booking-left .section-title { color: white; }
+    .booking-left .section-sub { color: rgba(255,255,255,0.75); }
+
+    .booking-features { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+    .booking-feature {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .bfeat-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0; margin-top: 2px;
+    }
+    .bfeat-title { font-size: 15px; font-weight: 600; color: white; margin-bottom: 3px; }
+    .bfeat-sub { font-size: 13px; color: rgba(255,255,255,0.65); }
+
+    .booking-right {}
+
+    .booking-card {
+      background: white; border-radius: 24px; padding: 36px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+    }
+
+    .booking-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; color: var(--dark-text);
+      margin-bottom: 8px;
+    }
+    .booking-card-sub { font-size: 14px; color: var(--mid-text); margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 18px; }
+    .form-label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--dark-text); margin-bottom: 7px;
+    }
+    .form-input, .form-select {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid rgba(186,185,185,0.4);
+      border-radius: 12px; font-size: 14px; font-family: 'Inter', sans-serif;
+      color: var(--dark-text); background: white;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none; appearance: none;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(43,151,212,0.12);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .btn-book {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, var(--navy), var(--sky));
+      color: white; border: none; border-radius: 14px;
+      font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+      margin-top: 6px;
+    }
+    .btn-book:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .booking-or {
+      text-align: center; margin: 18px 0 0;
+      font-size: 13px; color: var(--mid-text);
+    }
+    .booking-or a {
+      color: var(--sky); font-weight: 600; text-decoration: none;
+    }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 32px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark-text); color: rgba(255,255,255,0.65);
+      padding: 60px 5% 30px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+      margin-bottom: 48px;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+    }
+    .footer-logo .logo-icon {
+      width: 36px; height: 36px; background: linear-gradient(135deg, var(--navy), var(--sky));
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      color: white; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700;
+    }
+    .footer-logo span {
+      font-family: 'Playfair Display', serif; font-size: 18px;
+      font-weight: 700; color: white;
+    }
+    .footer-desc { font-size: 14px; line-height: 1.7; max-width: 300px; }
+
+    .footer-col-title {
+      font-size: 13px; font-weight: 600; color: white;
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 18px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      text-decoration: none; color: rgba(255,255,255,0.6);
+      font-size: 14px; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--sky); }
+
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 13px; }
+
+    /* ── MOBILE NAV MENU ── */
+    .mobile-menu {
+      display: none; position: fixed; top: 70px; left: 0; right: 0;
+      background: white; border-bottom: 1px solid rgba(186,185,185,0.3);
+      padding: 20px 5%; z-index: 99; flex-direction: column; gap: 18px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; font-size: 15px; font-weight: 500;
+      color: var(--dark-text); padding: 6px 0;
+      border-bottom: 1px solid rgba(186,185,185,0.15);
+    }
+    .mobile-menu a:last-child { border-bottom: none; color: var(--navy); font-weight: 700; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin: 0 auto 36px; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .cases-grid { grid-template-columns: 1fr 1fr; }
+      .booking-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">FA</div>
+    <span>FA Orthodontics</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#cases">Our Cases</a></li>
+    <li><a href="#booking">About</a></li>
+    <li><a href="#booking" class="nav-book-btn">Book Appointment</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#cases" onclick="toggleMenu()">Our Cases</a>
+  <a href="#booking" onclick="toggleMenu()">Book Appointment</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Orthodontic Specialists · Doha, Qatar</div>
+      <h1>Your Perfect<br/><em>Smile Starts</em><br/>Here</h1>
+      <p class="hero-sub">Expert orthodontic care using the latest technology — from traditional braces to clear aligners, we create smiles that last a lifetime.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book Free Consultation
+        </a>
+        <a href="#cases" class="btn-secondary">
+          View Our Cases
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">2,400+</div>
+          <div class="stat-label">Happy Patients</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hero-main-card">
+          <div class="smile-graphic">
+            <svg class="smile-svg" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="50" rx="48" ry="22" fill="white" stroke="#e0e0e0" stroke-width="1.5"/>
+              <rect x="18" y="40" width="10" height="18" rx="3" fill="#f8f8f8" stroke="#d0d0d0" stroke-width="1"/>
+              <rect x="30" y="37" width="11" height="21" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
+              <rect x="43" y="36" width="11" height="22" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
+              <rect x="56" y="36" width="11" height="22" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
+              <rect x="69" y="37" width="11" height="21" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
+              <rect x="82" y="40" width="10" height="18" rx="3" fill="#f8f8f8" stroke="#d0d0d0" stroke-width="1"/>
+              <line x1="18" y1="47" x2="92" y2="47" stroke="#2b97d4" stroke-width="1.5" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+          <div class="card-label">Current Treatment</div>
+          <div class="card-value">Invisalign — Phase 2</div>
+          <div class="card-row">
+            <div>
+              <div class="card-label">Progress</div>
+              <div class="card-value">68% Complete</div>
+            </div>
+            <div class="badge-pill">On Track ✓</div>
+          </div>
+        </div>
+        <div class="hero-float-card">
+          <div class="float-icon">📅</div>
+          <div class="float-text">
+            <div class="float-title">Next Appointment</div>
+            <div class="float-sub">Free consultation available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <span class="section-eyebrow">What We Offer</span>
+        <h2 class="section-title">Treatments Tailored<br/>to Your Smile</h2>
+      </div>
+      <p class="section-sub">Every smile is unique. We offer a full range of orthodontic treatments to suit your lifestyle, age, and goals.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🦷</div>
+        <div class="service-title">Traditional Braces</div>
+        <p class="service-desc">Time-tested metal or ceramic braces for reliable, precise correction of complex alignment issues at any age.</p>
+        <span class="service-tag">Most Effective →</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <div class="service-title">Invisalign</div>
+        <p class="service-desc">Virtually invisible clear aligners — removable, comfortable, and perfect for adults and teens who prefer a discreet option.</p>
+        <span class="service-tag">Most Popular →</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💎</div>
+        <div class="service-title">Ceramic Braces</div>
+        <p class="service-desc">Tooth-coloured ceramic brackets that blend with your natural smile while providing the same effectiveness as metal braces.</p>
+        <span class="service-tag">Aesthetic Choice →</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👶</div>
+        <div class="service-title">Early Intervention</div>
+        <p class="service-desc">Preventive orthodontics for children aged 7–12. Address jaw development and spacing issues before they become complex.</p>
+        <span class="service-tag">Ages 7–12 →</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <div class="service-title">Retainers</div>
+        <p class="service-desc">Custom fixed and removable retainers to maintain your perfect results long after your treatment is complete.</p>
+        <span class="service-tag">Post-Treatment →</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-title">Free Consultation</div>
+        <p class="service-desc">Not sure where to start? Book a no-obligation consultation. Our specialists assess your smile and recommend the best treatment plan.</p>
+        <span class="service-tag">Book Today →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="section-inner">
+    <div class="cases-header">
+      <span class="section-eyebrow">Real Transformations</span>
+      <h2 class="section-title">Our Cases</h2>
+      <p class="section-sub">Every smile tells a story. Browse real patient transformations — all cases treated at FA Orthodontics in Doha.</p>
+    </div>
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <div class="case-images">
+          <div class="case-img before">😬</div>
+          <div class="case-img after">😁</div>
+          <div class="case-divider">→</div>
+        </div>
+        <div class="case-labels">
+          <div class="case-lbl">Before</div>
+          <div class="case-lbl">After</div>
+        </div>
+        <div class="case-info">
+          <div class="case-treatment">Severe Crowding — Invisalign</div>
+          <div class="case-duration">Treatment: 18 months</div>
+          <span class="case-pill">Adult · Age 28</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-images">
+          <div class="case-img before">😶</div>
+          <div class="case-img after">🙂</div>
+          <div class="case-divider">→</div>
+        </div>
+        <div class="case-labels">
+          <div class="case-lbl">Before</div>
+          <div class="case-lbl">After</div>
+        </div>
+        <div class="case-info">
+          <div class="case-treatment">Open Bite — Metal Braces</div>
+          <div class="case-duration">Treatment: 22 months</div>
+          <span class="case-pill">Teen · Age 15</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-images">
+          <div class="case-img before">😕</div>
+          <div class="case-img after">😊</div>
+          <div class="case-divider">→</div>
+        </div>
+        <div class="case-labels">
+          <div class="case-lbl">Before</div>
+          <div class="case-lbl">After</div>
+        </div>
+        <div class="case-info">
+          <div class="case-treatment">Crossbite — Ceramic Braces</div>
+          <div class="case-duration">Treatment: 16 months</div>
+          <span class="case-pill">Adult · Age 32</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-images">
+          <div class="case-img before">🙁</div>
+          <div class="case-img after">😄</div>
+          <div class="case-divider">→</div>
+        </div>
+        <div class="case-labels">
+          <div class="case-lbl">Before</div>
+          <div class="case-lbl">After</div>
+        </div>
+        <div class="case-info">
+          <div class="case-treatment">Spacing — Invisalign Teen</div>
+          <div class="case-duration">Treatment: 12 months</div>
+          <span class="case-pill">Teen · Age 17</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-images">
+          <div class="case-img before">😮</div>
+          <div class="case-img after">😀</div>
+          <div class="case-divider">→</div>
+        </div>
+        <div class="case-labels">
+          <div class="case-lbl">Before</div>
+          <div class="case-lbl">After</div>
+        </div>
+        <div class="case-info">
+          <div class="case-treatment">Protrusion — Metal Braces</div>
+          <div class="case-duration">Treatment: 20 months</div>
+          <span class="case-pill">Child · Age 11</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-images">
+          <div class="case-img before">😐</div>
+          <div class="case-img after">😃</div>
+          <div class="case-divider">→</div>
+        </div>
+        <div class="case-labels">
+          <div class="case-lbl">Before</div>
+          <div class="case-lbl">After</div>
+        </div>
+        <div class="case-info">
+          <div class="case-treatment">Underbite — Ceramic Braces</div>
+          <div class="case-duration">Treatment: 24 months</div>
+          <span class="case-pill">Adult · Age 24</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <span class="section-eyebrow">Book an Appointment</span>
+      <h2 class="section-title" style="color:white;">Ready to Start<br/>Your Journey?</h2>
+      <p class="section-sub">Your first consultation is completely free. Our specialist will assess your smile and outline a personalised treatment plan — no commitment required.</p>
+      <div class="booking-features">
+        <div class="booking-feature">
+          <div class="bfeat-icon">✅</div>
+          <div>
+            <div class="bfeat-title">Free First Consultation</div>
+            <div class="bfeat-sub">No charge, no obligation. Just expert advice.</div>
+          </div>
+        </div>
+        <div class="booking-feature">
+          <div class="bfeat-icon">⚡</div>
+          <div>
+            <div class="bfeat-title">Fast Confirmation</div>
+            <div class="bfeat-sub">We confirm your appointment within 2 hours via WhatsApp.</div>
+          </div>
+        </div>
+        <div class="booking-feature">
+          <div class="bfeat-icon">📍</div>
+          <div>
+            <div class="bfeat-title">Located in Doha, Qatar</div>
+            <div class="bfeat-sub">Convenient location with easy parking access.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-right">
+      <div class="booking-card">
+        <div class="booking-card-title">Book Your Appointment</div>
+        <p class="booking-card-sub">Fill in your details and we'll get back to you shortly.</p>
+
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="e.g. Ahmed Al-Mansouri" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Phone (WhatsApp)</label>
+            <input type="tel" class="form-input" placeholder="+974 ..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Age</label>
+            <input type="number" class="form-input" placeholder="e.g. 25" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Treatment of Interest</label>
+          <select class="form-select">
+            <option value="">Select a treatment...</option>
+            <option>Free Consultation (Not Sure Yet)</option>
+            <option>Invisalign</option>
+            <option>Metal Braces</option>
+            <option>Ceramic Braces</option>
+            <option>Retainers</option>
+            <option>Early Intervention (Child)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Preferred Date</label>
+            <input type="date" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Preferred Time</label>
+            <select class="form-select">
+              <option value="">Select time...</option>
+              <option>Morning (9am – 12pm)</option>
+              <option>Afternoon (12pm – 4pm)</option>
+              <option>Evening (4pm – 8pm)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-book" onclick="sendToWhatsApp()">Confirm Appointment Request</button>
+        <p class="booking-or">
+          Or message us directly on
+          <a href="https://wa.me/97430183281" target="_blank">WhatsApp →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="logo-icon">FA</div>
+          <span>FA Orthodontics</span>
+        </div>
+        <p class="footer-desc">Specialist orthodontic care in the heart of Doha. Creating confident smiles with expert precision and personalised treatment.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#cases">Before & After</a></li>
+          <li><a href="#booking">Book Appointment</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/97430183281" target="_blank">WhatsApp: +974 3018 3281</a></li>
+          <li><a href="#">Doha, Qatar</a></li>
+          <li><a href="#">Sat – Thu: 9am – 8pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FA Orthodontics. All rights reserved.</p>
+      <p class="footer-copy">Doha, Qatar</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<a href="https://wa.me/97430183281" class="wa-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  function sendToWhatsApp() {
+    const name = document.querySelector('input[placeholder="e.g. Ahmed Al-Mansouri"]').value;
+    const phone = document.querySelector('input[placeholder="+974 ..."]').value;
+    const age = document.querySelector('input[placeholder="e.g. 25"]').value;
+    const treatment = document.querySelector('select').value;
+    const date = document.querySelector('input[type="date"]').value;
+
+    if (!name || !phone) {
+      alert('Please enter your name and phone number.');
+      return;
+    }
+
+    const msg = `Hello FA Orthodontics! I'd like to book an appointment.
+
+👤 Name: ${name}
+📞 Phone: ${phone}
+🎂 Age: ${age || 'Not specified'}
+🦷 Treatment: ${treatment || 'To be discussed'}
+📅 Preferred Date: ${date || 'Flexible'}
+
+Please confirm my appointment. Thank you!`;
+
+    window.open(`https://wa.me/97430183281?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
