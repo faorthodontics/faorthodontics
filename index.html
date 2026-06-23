@@ -1,4 +1,6 @@
+bash
 
+cat > /home/claude/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,25 +56,16 @@
     }
     .nav-logo img { height: 44px; width: auto; object-fit: contain; display: block; }
     .nav-logo { text-decoration: none; }
-
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a {
-      text-decoration: none; font-size: 15px; font-weight: 400;
-      color: var(--mid-text); transition: color 0.2s;
-    }
+    .nav-links a { text-decoration: none; font-size: 15px; font-weight: 400; color: var(--mid-text); transition: color 0.2s; }
     .nav-links a:hover { color: var(--navy); }
     .nav-book-btn {
       background: linear-gradient(135deg, var(--navy), var(--sky));
       color: white !important; padding: 9px 22px; border-radius: 25px;
-      font-weight: 700 !important; font-size: 14px !important;
-      transition: opacity 0.2s !important;
+      font-weight: 700 !important; font-size: 14px !important; transition: opacity 0.2s !important;
     }
     .nav-book-btn:hover { opacity: 0.88; }
-
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; background: none; border: none; padding: 4px;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
 
     /* ── HERO ── */
@@ -95,7 +88,7 @@
     }
     .hero-inner {
       max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-rows: 1fr 1fr; gap: 60px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
       align-items: center; position: relative; z-index: 1;
     }
     .hero-eyebrow {
@@ -106,16 +99,8 @@
       text-transform: uppercase; margin-bottom: 20px;
     }
     .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--sky); border-radius: 50%; }
-    .hero h1 {
-      font-family: 'Dax', sans-serif; font-weight: 700;
-      font-size: clamp(36px, 5vw, 58px); line-height: 1.15;
-      color: var(--dark-text); margin-bottom: 20px;
-    }
-    .hero h1 em {
-      font-style: italic;
-      background: linear-gradient(135deg, var(--navy), var(--sky));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
+    .hero h1 { font-family: 'Dax', sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 58px); line-height: 1.15; color: var(--dark-text); margin-bottom: 20px; }
+    .hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--navy), var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-sub { font-size: 16px; color: var(--mid-text); line-height: 1.7; margin-bottom: 36px; max-width: 440px; font-weight: 300; }
     .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
     .btn-primary {
@@ -127,39 +112,20 @@
       display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(32,94,171,0.38); }
-    .btn-secondary {
-      color: var(--navy); text-decoration: none; font-weight: 700; font-size: 15px;
-      display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s;
-    }
+    .btn-secondary { color: var(--navy); text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
     .btn-secondary:hover { gap: 10px; }
     .hero-stats { display: flex; gap: 32px; margin-top: 44px; padding-top: 32px; border-top: 1px solid rgba(186,185,185,0.3); }
     .stat-num { font-family: 'Dax', sans-serif; font-size: 30px; font-weight: 700; color: var(--navy); }
     .stat-label { font-size: 12px; color: var(--silver); font-weight: 400; margin-top: 2px; }
-
     .hero-visual { display: flex; justify-content: center; align-items: center; }
     .hero-card-stack { position: relative; width: 340px; height: 400px; }
-    .hero-main-card {
-      position: absolute; top: 0; left: 0; right: 0;
-      background: white; border-radius: 24px; padding: 28px;
-      box-shadow: 0 20px 60px rgba(32,94,171,0.15);
-    }
-    .smile-graphic {
-      width: 100%; height: 180px;
-      background: linear-gradient(135deg, var(--light-bg), #daeeff);
-      border-radius: 16px; display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-    }
-    .smile-svg { width: 120px; }
+    .hero-main-card { position: absolute; top: 0; left: 0; right: 0; background: white; border-radius: 24px; padding: 28px; box-shadow: 0 20px 60px rgba(32,94,171,0.15); }
+    .smile-graphic { width: 100%; height: 180px; background: linear-gradient(135deg, var(--light-bg), #daeeff); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
     .card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--silver); margin-bottom: 4px; }
     .card-value { font-size: 16px; font-weight: 700; color: var(--dark-text); }
     .card-row { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(186,185,185,0.2); }
     .badge-pill { background: linear-gradient(135deg, rgba(32,94,171,0.1), rgba(43,151,212,0.1)); color: var(--navy); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .hero-float-card {
-      position: absolute; bottom: 20px; right: -30px;
-      background: white; border-radius: 16px; padding: 14px 18px;
-      box-shadow: 0 10px 30px rgba(32,94,171,0.15);
-      display: flex; align-items: center; gap: 12px;
-    }
+    .hero-float-card { position: absolute; bottom: 20px; right: -30px; background: white; border-radius: 16px; padding: 14px 18px; box-shadow: 0 10px 30px rgba(32,94,171,0.15); display: flex; align-items: center; gap: 12px; }
     .float-icon { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--navy), var(--sky)); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .float-title { font-size: 13px; font-weight: 700; }
     .float-sub { font-size: 11px; color: var(--silver); }
@@ -175,11 +141,7 @@
     #services { background: var(--light-bg); }
     .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; gap: 24px; flex-wrap: wrap; }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .service-card {
-      background: white; border-radius: 20px; padding: 32px 28px;
-      border: 1px solid rgba(186,185,185,0.2);
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
+    .service-card { background: white; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(186,185,185,0.2); transition: transform 0.25s, box-shadow 0.25s; }
     .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(32,94,171,0.12); }
     .service-icon { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(32,94,171,0.1), rgba(43,151,212,0.15)); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 20px; }
     .service-title { font-size: 18px; font-weight: 700; color: var(--dark-text); margin-bottom: 10px; }
@@ -189,32 +151,28 @@
     /* ── CASES ── */
     #cases { background: white; }
     .cases-header { margin-bottom: 52px; }
-    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
     .case-card {
-      border-radius: 20px; overflow: hidden;
+      border-radius: 20px;
+      overflow: hidden;
       border: 1px solid rgba(186,185,185,0.2);
       transition: transform 0.25s, box-shadow 0.25s;
+      background: white;
     }
     .case-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(32,94,171,0.12); }
-    .case-images { display: grid; grid-template-rows: 1fr 1fr; height: 800px; position: relative; }
-    .case-img { overflow: hidden; }
-    .case-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .case-divider {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
-      width: 28px; height: 28px; background: white; border-radius: 50%;
-      border: 2px solid var(--sky); display: flex; align-items: center;
-      justify-content: center; font-size: 11px; font-weight: 700; color: var(--sky); z-index: 2;
+    .case-card img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .case-labels { display: grid; grid-template-rows: 1fr 1fr; background: var(--light-bg); }
-    .case-lbl { text-align: center; padding: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--silver); }
-    .case-info { padding: 20px; }
-    .case-treatment { font-size: 15px; font-weight: 700; color: var(--dark-text); margin-bottom: 6px; }
-    .case-duration { font-size: 13px; color: var(--silver); font-weight: 300; }
-    .case-pill { display: inline-block; margin-top: 12px; background: rgba(43,151,212,0.1); color: var(--sky); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; }
 
     /* ── BOOKING ── */
     #booking { background: linear-gradient(135deg, var(--navy) 0%, #1a4d8f 40%, var(--sky) 100%); padding: 90px 5%; }
-    .booking-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-rows: 1fr 1fr; gap: 80px; align-items: center; }
+    .booking-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .booking-left .section-eyebrow { color: rgba(255,255,255,0.65); }
     .booking-left .section-title { color: white; }
     .booking-left .section-sub { color: rgba(255,255,255,0.75); }
@@ -228,34 +186,16 @@
     .booking-card-sub { font-size: 14px; color: var(--mid-text); margin-bottom: 28px; font-weight: 300; }
     .form-group { margin-bottom: 18px; }
     .form-label { display: block; font-size: 13px; font-weight: 700; color: var(--dark-text); margin-bottom: 7px; }
-    .form-input, .form-select {
-      width: 100%; padding: 12px 16px;
-      border: 1.5px solid rgba(186,185,185,0.4); border-radius: 12px;
-      font-size: 14px; font-family: 'Dax', sans-serif;
-      color: var(--dark-text); background: white;
-      transition: border-color 0.2s, box-shadow 0.2s; outline: none; appearance: none;
-    }
+    .form-input, .form-select { width: 100%; padding: 12px 16px; border: 1.5px solid rgba(186,185,185,0.4); border-radius: 12px; font-size: 14px; font-family: 'Dax', sans-serif; color: var(--dark-text); background: white; transition: border-color 0.2s, box-shadow 0.2s; outline: none; appearance: none; }
     .form-input:focus, .form-select:focus { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(43,151,212,0.12); }
-    .form-row { display: grid; grid-template-rows: 1fr 1fr; gap: 16px; }
-    .btn-book {
-      width: 100%; padding: 15px;
-      background: linear-gradient(135deg, var(--navy), var(--sky));
-      color: white; border: none; border-radius: 14px;
-      font-size: 15px; font-weight: 700; font-family: 'Dax', sans-serif;
-      cursor: pointer; transition: opacity 0.2s, transform 0.2s; margin-top: 6px;
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-book { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--navy), var(--sky)); color: white; border: none; border-radius: 14px; font-size: 15px; font-weight: 700; font-family: 'Dax', sans-serif; cursor: pointer; transition: opacity 0.2s, transform 0.2s; margin-top: 6px; }
     .btn-book:hover { opacity: 0.9; transform: translateY(-1px); }
     .booking-or { text-align: center; margin: 18px 0 0; font-size: 13px; color: var(--mid-text); }
     .booking-or a { color: var(--sky); font-weight: 700; text-decoration: none; }
 
     /* ── WHATSAPP ── */
-    .wa-float {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      width: 58px; height: 58px; border-radius: 50%; background: #25D366;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.45); text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.45); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
     .wa-float:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
     .wa-float svg { width: 30px; height: 30px; fill: white; }
 
@@ -286,10 +226,10 @@
       .hero-actions { justify-content: center; }
       .hero-stats { justify-content: center; }
       .hero-visual { display: none; }
-      .services-grid { grid-template-rows: 1fr 1fr; }
-      .cases-grid { grid-template-rows: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .cases-grid { grid-template-columns: 1fr 1fr; }
       .booking-inner { grid-template-columns: 1fr; gap: 40px; }
-      .footer-top { grid-template-rows: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
     }
@@ -334,7 +274,7 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-eyebrow">Dr.Feras Aboudehn Top Orthodontic Specialist in Doha, Qatar</div>
+      <div class="hero-eyebrow">Orthodontic Specialist Dr. Feras Aboudehn · Doha, Qatar</div>
       <h1>Your Perfect<br/><em>Smile Starts</em><br/>Here</h1>
       <p class="hero-sub">Expert orthodontic care using the latest technology — from traditional braces to clear aligners, we create smiles that last a lifetime.</p>
       <div class="hero-actions">
@@ -366,7 +306,7 @@
       <div class="hero-card-stack">
         <div class="hero-main-card">
           <div class="smile-graphic">
-            <svg class="smile-svg" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="120" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="60" cy="50" rx="48" ry="22" fill="white" stroke="#e0e0e0" stroke-width="1.5"/>
               <rect x="18" y="40" width="10" height="18" rx="3" fill="#f8f8f8" stroke="#d0d0d0" stroke-width="1"/>
               <rect x="30" y="37" width="11" height="21" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
@@ -443,7 +383,7 @@
       <div class="service-card">
         <div class="service-icon">📋</div>
         <div class="service-title">Free Consultation</div>
-        <p class="service-desc">Not sure where to start? Book a no-obligation consultation. Our specialists assess your smile and recommend the best treatment plan.</p>
+        <p class="service-desc">Not sure where to start? Book a no-obligation consultation. Our specialists will assess your smile and recommend the best plan.</p>
         <span class="service-tag">Book Today →</span>
       </div>
     </div>
@@ -461,105 +401,51 @@
     <div class="cases-grid">
 
       <div class="case-card">
-        <div class="case-images">
-          <div class="case-img"><img src="FAortho_Apr_2.jpg" alt="Before" /></div>
-          <div class="case-img"><img src="FAortho_Apr_8.jpg" alt="After" /></div>
-         <div class="case-divider">↓</div>
-        </div>
-        <div class="case-labels">
-          <div class="case-lbl">Before</div>
-          <div class="case-lbl">After</div>
-        </div>
-        <div class="case-info">
-          <div class="case-treatment">Invisalign Treatment</div>
-          <div class="case-duration">Full alignment correction</div>
-          <span class="case-pill">Invisalign</span>
-        </div>
+        <img src="1.png" alt="Before and After" />
       </div>
 
       <div class="case-card">
-        <div class="case-images">
-          <div class="case-img"><img src="abdalah before and after.jpg" alt="Before" /></div>
-          <div class="case-img"><img src="abdallah smile.jpg" alt="After" /></div>
-          <div class="case-divider">→</div>
-        </div>
-        <div class="case-labels">
-          <div class="case-lbl">Before</div>
-          <div class="case-lbl">After</div>
-        </div>
-        <div class="case-info">
-          <div class="case-treatment">Braces Treatment</div>
-          <div class="case-duration">Full smile transformation</div>
-          <span class="case-pill">Braces</span>
-        </div>
+        <img src="abdalah before and after.jpg" alt="Before and After" />
       </div>
 
       <div class="case-card">
-        <div class="case-images">
-          <div class="case-img"><img src="before and after jessica.png" alt="Before" /></div>
-          <div class="case-img"><img src="Before12.png" alt="After" /></div>
-          <div class="case-divider">→</div>
-        </div>
-        <div class="case-labels">
-          <div class="case-lbl">Before</div>
-          <div class="case-lbl">After</div>
-        </div>
-        <div class="case-info">
-          <div class="case-treatment">Orthodontic Correction</div>
-          <div class="case-duration">Complete alignment</div>
-          <span class="case-pill">Ceramic Braces</span>
-        </div>
+        <img src="abdallah smile.jpg" alt="Before and After" />
       </div>
 
       <div class="case-card">
-        <div class="case-images">
-          <div class="case-img"><img src="FAortho_Aug_4.jpg" alt="Before" /></div>
-          <div class="case-img"><img src="FAortho_Sep05.jpg" alt="After" /></div>
-          <div class="case-divider">→</div>
-        </div>
-        <div class="case-labels">
-          <div class="case-lbl">Before</div>
-          <div class="case-lbl">After</div>
-        </div>
-        <div class="case-info">
-          <div class="case-treatment">Clear Aligner Therapy</div>
-          <div class="case-duration">Spacing correction</div>
-          <span class="case-pill">Invisalign</span>
-        </div>
+        <img src="before and after jessica.png" alt="Before and After" />
       </div>
 
       <div class="case-card">
-        <div class="case-images">
-          <div class="case-img"><img src="yasmin 2.png" alt="Before" /></div>
-          <div class="case-img"><img src="final watermark.png" alt="After" /></div>
-          <div class="case-divider">→</div>
-        </div>
-        <div class="case-labels">
-          <div class="case-lbl">Before</div>
-          <div class="case-lbl">After</div>
-        </div>
-        <div class="case-info">
-          <div class="case-treatment">Full Smile Makeover</div>
-          <div class="case-duration">Crowding & spacing</div>
-          <span class="case-pill">Braces</span>
-        </div>
+        <img src="Before12.png" alt="Before and After" />
       </div>
 
       <div class="case-card">
-        <div class="case-images">
-          <div class="case-img"><img src="Untitled-45.png" alt="Before" /></div>
-          <div class="case-img"><img src="1.png" alt="After" /></div>
-          <div class="case-divider">→</div>
-        </div>
-        <div class="case-labels">
-          <div class="case-lbl">Before</div>
-          <div class="case-lbl">After</div>
-        </div>
-        <div class="case-info">
-          <div class="case-treatment">Bite Correction</div>
-          <div class="case-duration">Alignment treatment</div>
-          <span class="case-pill">Metal Braces</span>
-        </div>
+        <img src="FAortho_Apr_2.jpg" alt="Before and After" />
+      </div>
+
+      <div class="case-card">
+        <img src="FAortho_Apr_8.jpg" alt="Before and After" />
+      </div>
+
+      <div class="case-card">
+        <img src="FAortho_Aug_4.jpg" alt="Before and After" />
+      </div>
+
+      <div class="case-card">
+        <img src="FAortho_Sep05.jpg" alt="Before and After" />
+      </div>
+
+      <div class="case-card">
+        <img src="final watermark.png" alt="Before and After" />
+      </div>
+
+      <div class="case-card">
+        <img src="Untitled-45.png" alt="Before and After" />
+      </div>
+
+      <div class="case-card">
+        <img src="yasmin 2.png" alt="Before and After" />
       </div>
 
     </div>
@@ -708,3 +594,7 @@
 </script>
 </body>
 </html>
+HTMLEOF
+Output
+
+exit code 0
