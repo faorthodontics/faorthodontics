@@ -1,6 +1,3 @@
-bash
-
-cat > /home/claude/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,136 +5,69 @@ cat > /home/claude/index.html << 'HTMLEOF'
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FA Orthodontics</title>
   <style>
-    @font-face {
-      font-family: 'Dax';
-      src: url('dax light.ttf') format('truetype');
-      font-weight: 300;
-    }
-    @font-face {
-      font-family: 'Dax';
-      src: url('dax light.ttf') format('truetype');
-      font-weight: 400;
-    }
-    @font-face {
-      font-family: 'Dax';
-      src: url('dax black.ttf') format('truetype');
-      font-weight: 700;
-    }
-    @font-face {
-      font-family: 'Dax';
-      src: url('dax black italic .ttf') format('truetype');
-      font-weight: 900;
-      font-style: italic;
-    }
+    @font-face { font-family: 'Dax'; src: url('dax light.ttf') format('truetype'); font-weight: 300; }
+    @font-face { font-family: 'Dax'; src: url('dax light.ttf') format('truetype'); font-weight: 400; }
+    @font-face { font-family: 'Dax'; src: url('dax black.ttf') format('truetype'); font-weight: 700; }
+    @font-face { font-family: 'Dax'; src: url('dax black italic .ttf') format('truetype'); font-weight: 900; font-style: italic; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #205eab;
-      --sky: #2b97d4;
-      --silver: #bab9b9;
-      --white: #ffffff;
-      --light-bg: #f4f8fd;
-      --dark-text: #1a1a2e;
-      --mid-text: #555;
-    }
-
+    :root { --navy: #205eab; --sky: #2b97d4; --silver: #bab9b9; --white: #ffffff; --light-bg: #f4f8fd; --dark-text: #1a1a2e; --mid-text: #555; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Dax', sans-serif; color: var(--dark-text); background: var(--white); }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%; height: 70px;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(186,185,185,0.25);
-    }
-    .nav-logo img { height: 44px; width: auto; max-width: 160px; object-fit: contain; display: block; background: transparent; }    .nav-logo { text-decoration: none; }
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 70px; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(186,185,185,0.25); }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .nav-logo img { height: 44px; width: auto; max-width: 160px; object-fit: contain; display: block; }
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
     .nav-links a { text-decoration: none; font-size: 15px; font-weight: 400; color: var(--mid-text); transition: color 0.2s; }
     .nav-links a:hover { color: var(--navy); }
-    .nav-book-btn {
-      background: linear-gradient(135deg, var(--navy), var(--sky));
-      color: white !important; padding: 9px 22px; border-radius: 25px;
-      font-weight: 700 !important; font-size: 14px !important; transition: opacity 0.2s !important;
-    }
+    .nav-book-btn { background: linear-gradient(135deg, var(--navy), var(--sky)); color: white !important; padding: 9px 22px; border-radius: 25px; font-weight: 700 !important; font-size: 14px !important; transition: opacity 0.2s !important; }
     .nav-book-btn:hover { opacity: 0.88; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      background: linear-gradient(145deg, #eaf2fb 0%, #f0f7ff 50%, #e8f4fc 100%);
-      padding: 100px 5% 60px; position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: -80px; right: -80px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(43,151,212,0.12) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .hero::after {
-      content: ''; position: absolute; bottom: -60px; left: -60px;
-      width: 380px; height: 380px;
-      background: radial-gradient(circle, rgba(32,94,171,0.10) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-      align-items: center; position: relative; z-index: 1;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      flex-direction: column; text-align: center;
-      background: rgba(32,94,171,0.1); color: var(--navy);
-      padding: 6px 14px; border-radius: 20px;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; margin-bottom: 20px;
-    }
-    .hero-eyebrow::before { display: none; }
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(145deg, #eaf2fb 0%, #f0f7ff 50%, #e8f4fc 100%); padding: 100px 5% 60px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(43,151,212,0.12) 0%, transparent 70%); border-radius: 50%; }
+    .hero::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 380px; height: 380px; background: radial-gradient(circle, rgba(32,94,171,0.10) 0%, transparent 70%); border-radius: 50%; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; background: rgba(32,94,171,0.1); color: var(--navy); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
     .hero h1 { font-family: 'Dax', sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 58px); line-height: 1.15; color: var(--dark-text); margin-bottom: 20px; }
     .hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--navy), var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-sub { font-size: 16px; color: var(--mid-text); line-height: 1.7; margin-bottom: 36px; max-width: 440px; font-weight: 300; }
     .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--navy), var(--sky));
-      color: white; padding: 14px 30px; border-radius: 30px;
-      text-decoration: none; font-weight: 700; font-size: 15px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 18px rgba(32,94,171,0.3);
-      display: inline-flex; align-items: center; gap: 8px;
-    }
+    .btn-primary { background: linear-gradient(135deg, var(--navy), var(--sky)); color: white; padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 15px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 18px rgba(32,94,171,0.3); display: inline-flex; align-items: center; gap: 8px; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(32,94,171,0.38); }
     .btn-secondary { color: var(--navy); text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
     .btn-secondary:hover { gap: 10px; }
     .hero-stats { display: flex; gap: 32px; margin-top: 44px; padding-top: 32px; border-top: 1px solid rgba(186,185,185,0.3); }
     .stat-num { font-family: 'Dax', sans-serif; font-size: 30px; font-weight: 700; color: var(--navy); }
     .stat-label { font-size: 12px; color: var(--silver); font-weight: 400; margin-top: 2px; }
-    .hero-visual { display: flex; justify-content: center; align-items: center; }
-    .hero-card-stack { position: relative; width: 340px; height: 460px; }
-    .hero-main-card { position: absolute; top: 0; left: 0; right: 0; background: white; border-radius: 24px; padding: 28px; box-shadow: 0 20px 60px rgba(32,94,171,0.15); }
-    .smile-graphic { width: 100%; height: 180px; background: linear-gradient(135deg, var(--light-bg), #daeeff); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+
+    /* HERO CARD */
+    .hero-visual { display: flex; justify-content: center; align-items: flex-start; padding-top: 20px; }
+    .hero-card-stack { position: relative; width: 340px; }
+    .hero-main-card { background: white; border-radius: 24px; padding: 24px; box-shadow: 0 20px 60px rgba(32,94,171,0.15); margin-bottom: 16px; }
+    .smile-graphic { width: 100%; height: 200px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; }
+    .smile-graphic img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--silver); margin-bottom: 4px; }
     .card-value { font-size: 16px; font-weight: 700; color: var(--dark-text); }
     .card-row { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(186,185,185,0.2); }
     .badge-pill { background: linear-gradient(135deg, rgba(32,94,171,0.1), rgba(43,151,212,0.1)); color: var(--navy); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .hero-float-card { position: absolute; bottom: -30px; right: -30px; background: white; border-radius: 16px; padding: 14px 18px; box-shadow: 0 10px 30px rgba(32,94,171,0.15); display: flex; align-items: center; gap: 12px; }
+    .hero-float-card { background: white; border-radius: 16px; padding: 14px 18px; box-shadow: 0 10px 30px rgba(32,94,171,0.15); display: flex; align-items: center; gap: 12px; margin-left: auto; width: fit-content; }
     .float-icon { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--navy), var(--sky)); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .float-title { font-size: 13px; font-weight: 700; }
     .float-sub { font-size: 11px; color: var(--silver); }
 
-    /* ── SECTIONS ── */
+    /* SECTIONS */
     section { padding: 90px 5%; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sky); margin-bottom: 12px; display: block; }
     .section-title { font-family: 'Dax', sans-serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 700; color: var(--dark-text); margin-bottom: 16px; line-height: 1.2; }
     .section-sub { font-size: 16px; color: var(--mid-text); line-height: 1.7; max-width: 560px; font-weight: 300; }
 
-    /* ── SERVICES ── */
+    /* SERVICES */
     #services { background: var(--light-bg); }
     .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; gap: 24px; flex-wrap: wrap; }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -148,29 +78,15 @@ cat > /home/claude/index.html << 'HTMLEOF'
     .service-desc { font-size: 14px; color: var(--mid-text); line-height: 1.65; font-weight: 300; }
     .service-tag { display: inline-block; margin-top: 16px; font-size: 11px; font-weight: 700; color: var(--sky); text-transform: uppercase; letter-spacing: 0.06em; }
 
-    /* ── CASES ── */
+    /* CASES */
     #cases { background: white; }
     .cases-header { margin-bottom: 52px; }
-    .cases-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .case-card {
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(186,185,185,0.2);
-      transition: transform 0.25s, box-shadow 0.25s;
-      background: white;
-    }
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .case-card { border-radius: 20px; overflow: hidden; border: 1px solid rgba(186,185,185,0.2); transition: transform 0.25s, box-shadow 0.25s; background: white; }
     .case-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(32,94,171,0.12); }
-    .case-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    .case-card img { width: 100%; height: auto; display: block; }
 
-    /* ── BOOKING ── */
+    /* BOOKING */
     #booking { background: linear-gradient(135deg, var(--navy) 0%, #1a4d8f 40%, var(--sky) 100%); padding: 90px 5%; }
     .booking-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .booking-left .section-eyebrow { color: rgba(255,255,255,0.65); }
@@ -194,17 +110,17 @@ cat > /home/claude/index.html << 'HTMLEOF'
     .booking-or { text-align: center; margin: 18px 0 0; font-size: 13px; color: var(--mid-text); }
     .booking-or a { color: var(--sky); font-weight: 700; text-decoration: none; }
 
-    /* ── WHATSAPP ── */
+    /* WHATSAPP */
     .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.45); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
     .wa-float:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
     .wa-float svg { width: 30px; height: 30px; fill: white; }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer { background: var(--dark-text); color: rgba(255,255,255,0.65); padding: 60px 5% 30px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
     .footer-logo { margin-bottom: 16px; }
-    .footer-logo img { height: 40px; width: auto; object-fit: contain; display: block; }
+    .footer-logo img { height: 40px; width: auto; max-width: 160px; object-fit: contain; display: block; }
     .footer-desc { font-size: 14px; line-height: 1.7; max-width: 300px; font-weight: 300; }
     .footer-col-title { font-size: 13px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 18px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -213,13 +129,13 @@ cat > /home/claude/index.html << 'HTMLEOF'
     .footer-bottom { padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .footer-copy { font-size: 13px; }
 
-    /* ── MOBILE MENU ── */
+    /* MOBILE MENU */
     .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: white; border-bottom: 1px solid rgba(186,185,185,0.3); padding: 20px 5%; z-index: 99; flex-direction: column; gap: 18px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--dark-text); padding: 6px 0; border-bottom: 1px solid rgba(186,185,185,0.15); }
     .mobile-menu a:last-child { border-bottom: none; color: var(--navy); font-weight: 700; }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; text-align: center; }
       .hero-sub { margin: 0 auto 36px; }
@@ -241,9 +157,7 @@ cat > /home/claude/index.html << 'HTMLEOF'
       .footer-bottom { flex-direction: column; text-align: center; }
       .hero-stats { flex-wrap: wrap; gap: 20px; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; }
-    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
   </style>
 </head>
 <body>
@@ -251,20 +165,7 @@ cat > /home/claude/index.html << 'HTMLEOF'
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-   <div class="smile-graphic">
- <div class="smile-graphic">
-  <svg width="120" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="50" rx="48" ry="22" fill="white" stroke="#e0e0e0" stroke-width="1.5"/>
-    <rect x="18" y="40" width="10" height="18" rx="3" fill="#f8f8f8" stroke="#d0d0d0" stroke-width="1"/>
-    <rect x="30" y="37" width="11" height="21" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
-    <rect x="43" y="36" width="11" height="22" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
-    <rect x="56" y="36" width="11" height="22" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
-    <rect x="69" y="37" width="11" height="21" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
-    <rect x="82" y="40" width="10" height="18" rx="3" fill="#f8f8f8" stroke="#d0d0d0" stroke-width="1"/>
-    <line x1="18" y1="47" x2="92" y2="47" stroke="#2b97d4" stroke-width="1.5" stroke-dasharray="3 2"/>
-  </svg>
-</div>
-</div>
+    <img src="FAortho_NoTagline_Original.png" alt="FA Orthodontics" />
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -287,9 +188,9 @@ cat > /home/claude/index.html << 'HTMLEOF'
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
-     <div class="hero-eyebrow">
-  Top Orthodontic Specialist in Doha<br/>Dr. Feras Aboudehn
-     </div>
+      <div class="hero-eyebrow">
+        Top Orthodontic Specialist in Doha<br/>Dr. Feras Aboudehn
+      </div>
       <h1>Your Perfect<br/><em>Smile Starts</em><br/>Here</h1>
       <p class="hero-sub">Expert orthodontic care using the latest technology — from traditional braces to clear aligners, we create smiles that last a lifetime.</p>
       <div class="hero-actions">
@@ -320,9 +221,9 @@ cat > /home/claude/index.html << 'HTMLEOF'
     <div class="hero-visual">
       <div class="hero-card-stack">
         <div class="hero-main-card">
-         <div class="smile-graphic">
-  <img src="FAortho_NoTagline_Original.png" alt="FA Orthodontics" />
-</div>
+          <div class="smile-graphic">
+            <img src="1.png" alt="FA Orthodontics Case" />
+          </div>
           <div class="card-label">Current Treatment</div>
           <div class="card-value">Invisalign — Phase 2</div>
           <div class="card-row">
@@ -405,55 +306,18 @@ cat > /home/claude/index.html << 'HTMLEOF'
       <p class="section-sub">Every smile tells a story. Browse real patient transformations — all cases treated at FA Orthodontics in Doha.</p>
     </div>
     <div class="cases-grid">
-
-      <div class="case-card">
-        <img src="1.png" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="abdalah before and after.jpg" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="abdallah smile.jpg" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="before and after jessica.png" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="Before12.png" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="FAortho_Apr_2.jpg" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="FAortho_Apr_8.jpg" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="FAortho_Aug_4.jpg" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="FAortho_Sep05.jpg" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="final watermark.png" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="Untitled-45.png" alt="Before and After" />
-      </div>
-
-      <div class="case-card">
-        <img src="yasmin 2.png" alt="Before and After" />
-      </div>
-
+      <div class="case-card"><img src="1.png" alt="Before and After" /></div>
+      <div class="case-card"><img src="abdalah before and after.jpg" alt="Before and After" /></div>
+      <div class="case-card"><img src="abdallah smile.jpg" alt="Before and After" /></div>
+      <div class="case-card"><img src="before and after jessica.png" alt="Before and After" /></div>
+      <div class="case-card"><img src="Before12.png" alt="Before and After" /></div>
+      <div class="case-card"><img src="FAortho_Apr_2.jpg" alt="Before and After" /></div>
+      <div class="case-card"><img src="FAortho_Apr_8.jpg" alt="Before and After" /></div>
+      <div class="case-card"><img src="FAortho_Aug_4.jpg" alt="Before and After" /></div>
+      <div class="case-card"><img src="FAortho_Sep05.jpg" alt="Before and After" /></div>
+      <div class="case-card"><img src="final watermark.png" alt="Before and After" /></div>
+      <div class="case-card"><img src="Untitled-45.png" alt="Before and After" /></div>
+      <div class="case-card"><img src="yasmin 2.png" alt="Before and After" /></div>
     </div>
   </div>
 </section>
@@ -583,9 +447,7 @@ cat > /home/claude/index.html << 'HTMLEOF'
 </a>
 
 <script>
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
   function sendToWhatsApp() {
     const name = document.getElementById('fname').value;
     const phone = document.getElementById('fphone').value;
@@ -600,7 +462,3 @@ cat > /home/claude/index.html << 'HTMLEOF'
 </script>
 </body>
 </html>
-HTMLEOF
-Output
-
-exit code 0
