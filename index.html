@@ -119,14 +119,14 @@ cat > /home/claude/index.html << 'HTMLEOF'
     .stat-num { font-family: 'Dax', sans-serif; font-size: 30px; font-weight: 700; color: var(--navy); }
     .stat-label { font-size: 12px; color: var(--silver); font-weight: 400; margin-top: 2px; }
     .hero-visual { display: flex; justify-content: center; align-items: center; }
-    .hero-card-stack { position: relative; width: 340px; height: 400px; }
+    .hero-card-stack { position: relative; width: 340px; height: 460px; }
     .hero-main-card { position: absolute; top: 0; left: 0; right: 0; background: white; border-radius: 24px; padding: 28px; box-shadow: 0 20px 60px rgba(32,94,171,0.15); }
     .smile-graphic { width: 100%; height: 180px; background: linear-gradient(135deg, var(--light-bg), #daeeff); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
     .card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--silver); margin-bottom: 4px; }
     .card-value { font-size: 16px; font-weight: 700; color: var(--dark-text); }
     .card-row { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(186,185,185,0.2); }
     .badge-pill { background: linear-gradient(135deg, rgba(32,94,171,0.1), rgba(43,151,212,0.1)); color: var(--navy); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
-    .hero-float-card { position: absolute; bottom: 20px; right: -30px; background: white; border-radius: 16px; padding: 14px 18px; box-shadow: 0 10px 30px rgba(32,94,171,0.15); display: flex; align-items: center; gap: 12px; }
+    .hero-float-card { position: absolute; bottom: -30px; right: -30px; background: white; border-radius: 16px; padding: 14px 18px; box-shadow: 0 10px 30px rgba(32,94,171,0.15); display: flex; align-items: center; gap: 12px; }
     .float-icon { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--navy), var(--sky)); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .float-title { font-size: 13px; font-weight: 700; }
     .float-sub { font-size: 11px; color: var(--silver); }
@@ -308,18 +308,9 @@ cat > /home/claude/index.html << 'HTMLEOF'
     <div class="hero-visual">
       <div class="hero-card-stack">
         <div class="hero-main-card">
-          <div class="smile-graphic">
-            <svg width="120" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="60" cy="50" rx="48" ry="22" fill="white" stroke="#e0e0e0" stroke-width="1.5"/>
-              <rect x="18" y="40" width="10" height="18" rx="3" fill="#f8f8f8" stroke="#d0d0d0" stroke-width="1"/>
-              <rect x="30" y="37" width="11" height="21" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
-              <rect x="43" y="36" width="11" height="22" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
-              <rect x="56" y="36" width="11" height="22" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
-              <rect x="69" y="37" width="11" height="21" rx="3" fill="white" stroke="#d0d0d0" stroke-width="1"/>
-              <rect x="82" y="40" width="10" height="18" rx="3" fill="#f8f8f8" stroke="#d0d0d0" stroke-width="1"/>
-              <line x1="18" y1="47" x2="92" y2="47" stroke="#2b97d4" stroke-width="1.5" stroke-dasharray="3 2"/>
-            </svg>
-          </div>
+         <div class="smile-graphic">
+  <img src="1.jpg" alt="FA Orthodontics" style="width:100%; height:100%; object-fit:cover; border-radius:16px;" />
+</div>
           <div class="card-label">Current Treatment</div>
           <div class="card-value">Invisalign — Phase 2</div>
           <div class="card-row">
