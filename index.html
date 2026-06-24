@@ -93,12 +93,13 @@ cat > /home/claude/index.html << 'HTMLEOF'
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
+      flex-direction: column; text-align: center;
       background: rgba(32,94,171,0.1); color: var(--navy);
       padding: 6px 14px; border-radius: 20px;
       font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; margin-bottom: 20px;
     }
-    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--sky); border-radius: 50%; }
+    .hero-eyebrow::before { display: none; }
     .hero h1 { font-family: 'Dax', sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 58px); line-height: 1.15; color: var(--dark-text); margin-bottom: 20px; }
     .hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--navy), var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-sub { font-size: 16px; color: var(--mid-text); line-height: 1.7; margin-bottom: 36px; max-width: 440px; font-weight: 300; }
